@@ -35,4 +35,17 @@ df_mean_std <- cbind(df_mean_std, subset(combined_df, select = c(grep("std", cna
 
 # This part has already been taken care of, in step 1 when the colnames have been added to the combined as well as individual data sets
 
-# 4. 
+# 4. Stpidest way to describe the labels. If this stupid way is still here, it means I did not find enough time to make lapply, replace and assign to work correctly
+# and deadline was near. Bad excuse, but true.
+
+df_mean_std <- cbind(df_mean_std, rbind(read.table("UCI HAR Dataset/train/y_train.txt"), read.table("UCI HAR Dataset/test/y_test.txt")))
+names(df_mean_std)[names(df_mean_std) == "V1"] <- "activity_labels"
+ df_mean_std[df_mean_std[[87]] == 1,] <- "WALKING"
+df_mean_std[df_mean_std[[87]] == 2,] <- "WALKING_UPSTAIRS"
+df_mean_std[df_mean_std[[87]] == 3,] <- "WALKING_DOWNSTAIRS"
+df_mean_std[df_mean_std[[87]] == 4,] <- "SITTING"
+df_mean_std[df_mean_std[[87]] == 5,] <- "STANDING"
+df_mean_std[df_mean_std[[87]] == 6,] <- "LAYING"
+
+
+#5. Averaging by activity
