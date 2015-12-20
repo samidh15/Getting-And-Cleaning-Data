@@ -3,7 +3,9 @@
 # Assumes that the code resides in the same level as "UCI HAR Dataset"
 
 
-# 1. Combine the train and test set
+# 1. Combine the train and test set. I believe inadvertently, step 3 has also been accomplished here.
+# The names of the columns have been added in this step, instead of waiting until step 3. I did not notice
+# until I went to step 3. At least that is what I think.
 
 # Read data files
 
@@ -29,3 +31,8 @@ df_mean_std <- subset(combined_df, select = c(grep("mean", ignore.case = TRUE, c
 df_mean_std <- cbind(df_mean_std, subset(combined_df, select = c(grep("std", cnames, ignore.case = TRUE))))
 
 
+#3. Descriptive activity names to name the activities in the data set
+
+# This part has already been taken care of, in step 1 when the colnames have been added to the combined as well as individual data sets
+
+# 4. 
