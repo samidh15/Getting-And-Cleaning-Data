@@ -59,6 +59,16 @@ names(df_mean_std)[names(df_mean_std) == "V1"] <- "subject_labels"
 
 aggdata <-aggregate(df_mean_std, by=list(df_mean_std$activity_labels,df_mean_std$subject_labels), FUN = mean, na.rm = TRUE) 
 
-write.table(df_mean_std, file = "resultant_tidy_set.txt", sep = ",", row.names = FALSE )
+#remove last two columns because they are categorical
+
+no_of_columns <- ncol(aggdata)
+
+aggdata <- aggdata[-no_of_columns]
+aggdata <- aggdata[-no_of_columns + 1]
+
+names(aggdata)[names(aggdata) == "Group.2"] <- "subject_labels"
+names(aggdata)[names(aggdata) == "Group.1"] <- "activity_labels"
+
+write.table(aggdata, file = "resultant_tidy_set.txt", sep = ",", row.names = FALSE )
 
 
