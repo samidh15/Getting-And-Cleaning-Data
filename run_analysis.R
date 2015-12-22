@@ -59,6 +59,6 @@ names(df_mean_std)[names(df_mean_std) == "V1"] <- "subject_labels"
 
 aggdata <-aggregate(df_mean_std, by=list(df_mean_std$activity_labels,df_mean_std$subject_labels), FUN = mean, na.rm = TRUE) 
 
-write.table(df_mean_std, file = "resultant_tidy_set.csv", sep = "," )
+write.table(df_mean_std, file = "resultant_tidy_set.txt", sep = ",", row.names = FALSE )
 
 
