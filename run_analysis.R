@@ -1,4 +1,4 @@
-#/usr/bin/RScript
+#!/usr/bin/RScript
 
 # Assumes that the code resides in the same level as "UCI HAR Dataset"
 
